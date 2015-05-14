@@ -1,0 +1,6 @@
+D:\SourceCodes\MakeMoney\MakeMoney\bin\Debug\MakeMoney.exe.config
+D:\SourceCodes\MakeMoney\MakeMoney\bin\Debug\MakeMoney.exe
+D:\SourceCodes\MakeMoney\MakeMoney\bin\Debug\MakeMoney.pdb
+D:\SourceCodes\MakeMoney\MakeMoney\obj\Debug\MakeMoney.csprojResolveAssemblyReference.cache
+D:\SourceCodes\MakeMoney\MakeMoney\obj\Debug\MakeMoney.exe
+D:\SourceCodes\MakeMoney\MakeMoney\obj\Debug\MakeMoney.pdb
