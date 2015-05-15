@@ -6,8 +6,8 @@ namespace MakeMoney
     {
         public StockLiveData()
         {
-            this.Buy = new float[5];
-            this.Sell = new float[5];
+            this.BuyPrices = new float[5];
+            this.SellPrices = new float[5];
         }
 
         /// <summary>
@@ -88,11 +88,11 @@ namespace MakeMoney
         /// <summary>
         /// 买一 - 买五(元/手)
         /// </summary>
-        public float[] Buy { get; set; }
+        public float[] BuyPrices { get; set; }
 
         /// <summary>
         /// 卖一 - 卖五(元/手)
         /// </summary>
-        public float[] Sell { get; set; }
+        public float[] SellPrices { get; set; }
     }
 }
