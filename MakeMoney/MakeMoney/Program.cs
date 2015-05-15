@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Text;
 
 namespace MakeMoney
 {
@@ -9,8 +10,13 @@ namespace MakeMoney
     {
         static void Main(string[] args)
         {
-            string stockUrl = "http://www.webxml.com.cn/WebServices/ChinaStockWebService.asmx";
-            var result = WebServiceHelper.InvokeWebService(stockUrl, "getStockImageByteByCode", new object[] {"sz000988"});
+            // getStockImageByCode GET 股票GIF分时走势图
+            // getStockImageByteByCode 获得中国股票GIF分时走势图字节数组
+            // getStockImage_kByCode 直接获得中国股票GIF日/周/月 K 线图（545*300pixel/72dpi）
+            // getStockImage_kByteByCode 获得中国股票GIF日/周/月 K 线图字节数组
+            // getStockInfoByCode 获得中国股票及时行情
+            var stockUrl = "http://www.webxml.com.cn/WebServices/ChinaStockWebService.asmx";
+            var result = WebServiceHelper.InvokeWebService(stockUrl, "getStockImageByteByCode", new object[] { "theStockCode=sz000988" });
             if (result != null)
             {
                 var resultBytes = result as byte[];
@@ -19,12 +25,22 @@ namespace MakeMoney
                     Debug.Assert(false, "resultBytes cannot be null");
                 }
 
-                using (MemoryStream ms = new MemoryStream(resultBytes))
+                using (var ms = new MemoryStream(resultBytes))
                 {
-                    using (Image img = Image.FromStream(ms))
+                    using (var img = Image.FromStream(ms))
                     {
                         img.Save("C:\\stock_trend.bmp");
                     }
+                }
+            }
+
+            var stockInfo = WebServiceHelper.InvokeWebService(stockUrl, "getStockInfoByCode", new object[] { "sz000988" });
+            var stockInfoArray = stockInfo as string[];
+            if (stockInfoArray != null)
+            {
+                foreach (var s in stockInfoArray)
+                {
+                    Debug.WriteLine(s);
                 }
             }
 
