@@ -17,7 +17,7 @@ namespace MakeMoney
 
             const string regexPattern = "(?:<li><a\\s+target=\"_blank\"\\s+href=\"http://quote.eastmoney.com/[^.]*\\.html\">([^<]+)\\((.+)\\)</a></li>)";
 
-            var suffix = "ss";  // 上海 sh，深圳 sz
+            var suffix = "ss";  // 上海 sh，深圳 sz hahah
             var match = Regex.Match(codeContent, regexPattern);
             var stockNameList = new List<StockName>();
             var ssStart = codeContent.IndexOf("<div class=\"sltit\"><a name=\"sh\"/>上海股票</div>", StringComparison.Ordinal);
