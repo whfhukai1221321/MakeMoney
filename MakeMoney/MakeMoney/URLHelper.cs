@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace MakeMoney
 {
@@ -16,8 +13,8 @@ namespace MakeMoney
             var buffer = new char[256];
             var stringBuilder = new StringBuilder();
 
-            var httpRequest = (HttpWebRequest) WebRequest.Create(httpUrl);
-            var httpResponse = (HttpWebResponse) httpRequest.GetResponse();
+            var httpRequest = (HttpWebRequest)WebRequest.Create(httpUrl);
+            var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
 
             Stream respStream = httpResponse.GetResponseStream();
 
