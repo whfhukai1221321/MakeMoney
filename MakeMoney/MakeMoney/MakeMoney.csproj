@@ -48,12 +48,18 @@
     <Compile Include="DataExtractor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RealTimeStatistics.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Stock.cs" />
     <Compile Include="StockAnalyzer.cs" />
     <Compile Include="StockLiveData.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="URLHelper.cs" />
+    <Compile Include="VolatilityAlarm.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="WebServiceHelper.cs">
       <SubType>Code</SubType>
     </Compile>
