@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
+using System.Drawing;
+using System.IO;
 
 namespace MakeMoney
 {
@@ -10,6 +9,24 @@ namespace MakeMoney
     {
         static void Main(string[] args)
         {
+            string stockUrl = "http://www.webxml.com.cn/WebServices/ChinaStockWebService.asmx";
+            var result = WebServiceHelper.InvokeWebService(stockUrl, "getStockImageByteByCode", new object[] {"sz000988"});
+            if (result != null)
+            {
+                var resultBytes = result as byte[];
+                if (resultBytes == null)
+                {
+                    Debug.Assert(false, "resultBytes cannot be null");
+                }
+
+                using (MemoryStream ms = new MemoryStream(resultBytes))
+                {
+                    using (Image img = Image.FromStream(ms))
+                    {
+                        img.Save("C:\\stock_trend.bmp");
+                    }
+                }
+            }
 
             Console.WriteLine("正在获取股票种类数据...");
             var stockNameList = CodeNameExtractor.GetStockNames();
