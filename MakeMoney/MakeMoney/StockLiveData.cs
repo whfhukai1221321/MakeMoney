@@ -2,6 +2,9 @@
 
 namespace MakeMoney
 {
+    /// <summary>
+    /// 股票实时数据
+    /// </summary>
     class StockLiveData
     {
         public StockLiveData()
