@@ -50,7 +50,9 @@
     <Compile Include="Stock.cs" />
     <Compile Include="StockAnalyzer.cs" />
     <Compile Include="URLHelper.cs" />
-    <Compile Include="WebServiceHelper.cs" />
+    <Compile Include="WebServiceHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
