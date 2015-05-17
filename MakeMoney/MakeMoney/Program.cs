@@ -10,38 +10,11 @@ namespace MakeMoney
     {
         static void Main(string[] args)
         {
-            // getStockImageByCode GET 股票GIF分时走势图
-            // getStockImageByteByCode 获得中国股票GIF分时走势图字节数组
-            // getStockImage_kByCode 直接获得中国股票GIF日/周/月 K 线图（545*300pixel/72dpi）
-            // getStockImage_kByteByCode 获得中国股票GIF日/周/月 K 线图字节数组
-            // getStockInfoByCode 获得中国股票及时行情
-            var stockUrl = "http://www.webxml.com.cn/WebServices/ChinaStockWebService.asmx";
-            var result = WebServiceHelper.InvokeWebService(stockUrl, "getStockImageByteByCode", new object[] { "theStockCode=sz000988" });
-            if (result != null)
+            var url = "http://hq.sinajs.cn/list=sz000988,sh601028,sh000988";
+            var content = URLHelper.GetPageContent(url);
+            if (!string.IsNullOrEmpty(content))
             {
-                var resultBytes = result as byte[];
-                if (resultBytes == null)
-                {
-                    Debug.Assert(false, "resultBytes cannot be null");
-                }
 
-                using (var ms = new MemoryStream(resultBytes))
-                {
-                    using (var img = Image.FromStream(ms))
-                    {
-                        img.Save("C:\\stock_trend.bmp");
-                    }
-                }
-            }
-
-            var stockInfo = WebServiceHelper.InvokeWebService(stockUrl, "getStockInfoByCode", new object[] { "sz000988" });
-            var stockInfoArray = stockInfo as string[];
-            if (stockInfoArray != null)
-            {
-                foreach (var s in stockInfoArray)
-                {
-                    Debug.WriteLine(s);
-                }
             }
 
             Console.WriteLine("正在获取股票种类数据...");
